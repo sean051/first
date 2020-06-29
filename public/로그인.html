@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <title>로그인</title>
+</head>
+<body>     
+    <div class="cl_modal" id="id_modal"></div>
+    <div class="cl_moChild" id="id_moChild">
+        <img class="cl_moChImg"  src="../images/x.png" alt="">
+        <div class="cl_moChTxt" id="id_moChTxt">아이디와 비밀번호를 확인해주세요!</div>
+        <input class="cl_moChBtn btn" type="button" value="확인" onclick="f_modalAlert()">
+    </div>
+    <div class="cl_moChild" id="id_moChThx">
+        <img class="cl_moChImg"  src="../images/thx.png" alt="">
+        <div class="cl_moChTxt" >로그인 성공!</div>
+        <input class="cl_moChBtn btn" type="button" value="확인" onclick="f_exit()">
+    </div>
+    <div class="cl_signUp">
+        <div class="cl_input"><br><br>
+            <img src="../images/강지1.jpg" id="id_loginImg"><br><br><br>
+            아이디<br><input type="text" id="id_id" value="" placeholder="아이디 입력란" required><br>
+            비밀번호<br><input type="text" id="id_pw" value="" placeholder="비밀번호 입력란" required><br>
+            <div class="cl_btns">
+                <input type="button" class="btn" value="로그인" onclick="f_login()" style="width: 60px;">
+                <input type="button" class="btn" value="나가기" onclick="f_exit()" style="width: 60px;">        
+            </div>
+        </div>
+    </div>
+    <script>
+        // ID값 불러오기
+        var v_id = document.getElementById("id_id");
+        var v_pw = document.getElementById("id_pw");
+        var v_orgpw = "";
+        // 모달창 불러오기
+        var v_mo = document.getElementById("id_modal");
+        var v_moCh = document.getElementById("id_moChild");
+        var v_moChThx = document.getElementById("id_moChThx");
+
+        v_pw.onchange = function () {
+            v_orgpw = v_pw.value;
+            v_pw.value = f_pwBlind(v_pw.value);            
+        }    
+
+        // 로그인버튼 클릭시
+        function f_login() {
+            if (!JSON.parse(localStorage.getItem(v_id.value))) {
+                v_mo.style.display = "block";
+                v_moCh.style.display = "block";
+                v_moChTxt.innerHTML = "아이디 및 비밀번호를 입력해주세요!";                     
+            }
+            if (!v_id.value || !v_pw.value) {
+                v_mo.style.display = "block";
+                v_moCh.style.display = "block";
+                v_moChTxt.innerHTML = "아이디 및 비밀번호를 입력해주세요!";                       
+            } else {
+                var v_mem = JSON.parse(localStorage.getItem(v_id.value));                
+            }
+            
+            if (v_mem.id == v_id.value && v_mem.pw == v_orgpw) {
+                opener.document.getElementById("id_menu2").innerHTML = "<a href='#' onclick='f_logout()'>로그아웃</a>";          
+                opener.document.getElementById("id_menu4").innerHTML = v_mem.name + "님 반갑습니다.";     
+
+                var v_lo = JSON.parse(localStorage.getItem(localStorage.key(0)));
+                opener.sessionStorage.setItem(v_lo.id, JSON.stringify(v_lo));
+
+                v_mo.style.display = "block";
+                v_moChThx.style.display = "block";
+            } else {
+                v_mo.style.display = "block";
+                v_moCh.style.display = "block";
+                v_moChTxt.innerHTML = "아이디와 비밀번호를 확인해주세요!";         
+            } 
+        }
+
+    </script>
+</body>
+</html>

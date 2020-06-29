@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <title>홈페이지 제작 중입니다.</title>
+    <style>
+        .cl_picImg1 {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            top: 20px;
+        }
+        .cl_imgTxt1 {
+            position: relative;
+            font-weight: bold;
+            font-size: 1.2em;
+            float: left;
+            width: 500px;       
+            text-align: center;
+            margin-top: 10px;
+        }
+        .cl_imgTxtS1 {
+            position: relative;
+            left: 10px;
+            text-align: left;
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="container">
+            <div class="header">
+                <div id="id_title">다 락 방</div>
+                <div id="id_menu">
+                    <div class="cl_menu" id="id_menu1">
+                        <a href="#" onclick="f_newSignUp()">회원가입</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu2">
+                        <a href="#" onclick="f_newLogin()">로그인</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu3">
+                        <a href="../index.html">홈</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu4">
+                    </div>                 
+                </div>
+            </div>
+            <div class="nav">
+                <img src="../images/강지1.jpg" class="cl_navImg"><br><br><hr>
+                <div id="id_hiTxt">어서오세요. 환영합니다!</div><hr>
+                <ul id="menu">
+                    <li class="mainNav"><a href="#" style="color: black;" onclick="f_menu()">심리테스트</a><br>
+                        <ul id="id_ui">
+                            <a href="mind1.html" id="id_subMenu">그림기반 심리테스트</a><br>
+                            <a href="mind2.html" id="id_subMenu">그림기반 심리테스트2</a><br>
+                            <a href="#" id="id_subMenu">선택기반 심리테스트</a><br>
+                            <a href="mind4.html" id="id_subMenu">심심풀이 심리테스트</a><br>
+                        </ul>
+                    </li><br>                        
+                    <li class="mainNav"><a href="board.html" style="color: black;">자유게시판</a></li><br>
+                    <li class="mainNav"><a href="board.html" style="color: black;">유머게시판</a></li><br>
+                    <li class="mainNav"><a href="#" style="color: black;">나의 테스트 확인</a></li><br>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="cl_mindTitle">그림에 따른 심리테스트</div>
+                <div class="cl_mindTxt">
+                    <div class="cl_mindTxtQ" id="id_mindTxt"></div>
+                </div><br>
+                <div class="choose">
+                    <div class="cl_imgTxt1">
+                        바다에서 본 산<br><br>
+                        <div class="cl_imgTxtS1">
+                        바다가 보이는 산을 선택한 사람은 사람과의 교제를 <br>중요하게 생각하지만, 
+                        남의 일에 참견하기 좋아하거나 다른 사람의 일에 지나치게 신경쓰는 경향이 있습니다. <br><br>
+                        또 연애에 있어서는 로맨티스트로 첫눈에 반하기 쉬운 면이 있습니다.<br><br>
+                        <b>(그림을 클릭하면 선택단계로 돌아갑니다.)</b>
+                        </div>
+                    </div>
+                    <a href="mind1.html"><img class="cl_picImg1" src="../images/seaM.jpg" alt=""></a>
+                </div>                       
+            </div>
+            <div class="footer">
+                <div id="id_footerTag">&copy; hungchipi corporation</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var v_mindTxt = document.getElementById("id_mindTxt");
+        window.onload = f_statusChk();
+        v_mindTxt.innerHTML = "바다에서 본 산 그림을 선택한 " + f_getName() + ", <br> 내용을 확인해보세요!";        
+    </script>
+</body>
+</html>
+
+<!-- 그림에 따른 심리상태
+질문
+
+새로운 집으로 이사 가게 되어 선배로부터 한라산 그림을 축하 선물로 받게 되었습니다. 만약에 당신이 다음 네 가지 중에 하나를 고른다면 어떤 그림이었으면 좋겠습니까?
+
+1. 바다에서 본 한라산
+2. 소나무 사이에 보이는 한라산
+3. 길이 있는 한라산
+4. 하늘에서 본 한라산
+
+
+해설
+
+1. 바다가 보이는 한라산을 선택한 사람은 사람과의 교제를 중요하게 생각하지만, 남의 일에 참견하기 좋아하거나 다른 사람의 일에 지나치게 신경쓰는 경향이 있습니다. 또 연애에 있어서는 로맨티스트로 첫눈에 반하기 쉬운 면이 있습니다.
+
+2. 소나무를 통해 볼 수 있는 한라산을 선택한 사람은 원래 고풍스러워 도덕적인 것을 좋아하는 사람입니다. 산은 이상이나 꿈, 목표를 나타내고, 소나무나 수풀은 그것을 제한하는 도덕이나 고생을 나타냅니다. 이것을 선택한 사람은 사람과의 사귐보다는 먼저 자기 자신을 제일로 생각하는 완고한 면도 있으나 자신의 꿈을 실현시키려고 노력하면서 한 발 한 발 앞으로 나아가는 성실한 면도 가지고 있습니다.
+
+3. 산과 산에 둘러싸이고 구름이 걸려 있는 우뚝 솟은 한라산은 보는 사람에게 뿌듯함을 느끼게 합니다. 이 그림에서 산을 향해 뻗어 있는 길에는 그 사람의 인생관이 나타나 있습니다. 이 길은 여러가지 고생이나 고민을 뛰어넘어 열심히 노력해 나아가려는 의욕을 상징하고 있습니다. 사람과 사귀는 일도 먼저 자진애서 하며, 상대방의 입장을 고려하여 말하는 사람으로 누구한테서나 신뢰받고 친숙해 질 수 있는 사람입니다.
+
+4. 높은 곳에서 본 한라산을 좋아하는 사람은 지배욕이 강한 사람입니다. 따라서 누구에게 이것, 저것 지시 받는 것을 싫어합니다. 또 언제나 주위 사람들이 자신을 추켜세워 주기를 바라는 타입입니다. 새로운 것을 자진해서 추진하려는 의욕도 갖고 있습니다. 게다가 인간 관계도 넓히려 하고 해외에도 관심을 많이 가지고 있는 사람입니다.
+
+-->

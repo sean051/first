@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/script.js"></script>
+    <title>홈페이지 제작 중입니다.</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="container">
+            <div class="header">
+                <div id="id_title">다 락 방</div>
+                <div id="id_menu">
+                    <div class="cl_menu" id="id_menu1">
+                        <a href="#" onclick="f_newSignUp('public/')">회원가입</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu2">
+                        <a href="#" onclick="f_newLogin('public/')">로그인</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu3">
+                        <a href="index.html">홈</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu4">
+                    </div>                 
+                </div>
+            </div>
+            <div class="nav">
+                <img src="images/강지1.jpg" class="cl_navImg"><br><br><hr>
+                <div id="id_hiTxt">어서오세요. 환영합니다!</div><hr>
+                <ul id="menu">
+                    <li class="mainNav"><a href="#" style="color: black;" onclick="f_menu()">심리테스트</a><br>
+                        <ul id="id_ui">
+                                <a href="public/mind1.html" id="id_subMenu">그림기반 심리테스트</a><br>
+                                <a href="public/mind2.html" id="id_subMenu">글자기반 심리테스트</a><br>
+                                <a href="#" id="id_subMenu">선택기반 심리테스트</a><br>
+                                <a href="public/mind4.html" id="id_subMenu">심심풀이 심리테스트</a><br>
+                        </ul>
+                    </li><br>                        
+                    <li class="mainNav"><a href="public/board.html" style="color: black;">자유게시판</a></li><br>
+                    <li class="mainNav"><a href="public/board.html" style="color: black;">유머게시판</a></li><br>
+                    <li class="mainNav"><a href="#" style="color: black;">나의 테스트 확인</a></li><br>
+                </ul>
+            </div>
+            <div class="content">
+                <div id="id_disp" ></div>
+                <img src="images/welcome.png" id="id_conImg">
+            </div>
+            <div class="footer">
+                <div id="id_footerTag">&copy; hungchipi corporation</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = f_statusChk(), f_triMake(), f_spin();
+    </script>
+</body>
+</html>

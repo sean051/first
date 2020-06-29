@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <title>회원가입</title>
+    <style>
+    </style>
+</head>
+<body>    
+    <div class="cl_modal" id="id_modal"></div>
+    <div class="cl_moChild" id="id_moChild">
+        <img class="cl_moChImg"  src="../images/x.png" alt="">
+        <div class="cl_moChTxt" id="id_moChTxt"></div>
+        <input class="cl_moChBtn btn" type="button" value="확인" onclick="f_modalAlert()">
+    </div>
+    <div class="cl_moChild" id="id_moChThx">
+        <img class="cl_moChImg"  src="../images/cong.png" alt="">
+        <div class="cl_moChTxt" >가입해주셔서 감사합니당!</div>
+        <input class="cl_moChBtn btn" type="button" value="확인" onclick="f_exit()">
+    </div>
+    <form action="#" method="get" onsubmit="return f_submit()">
+        <div class="cl_backg">
+            <div class="cl_signUp">
+                <div class="cl_input">
+                    <img src="../images/login.png" id="id_signUpImg">
+                    <div id="id_txtDiv">&copy; ID, 비밀번호를 제외한 정보는 테스트에 사용됩니다. &copy;</div><br>
+                    아이디<br><input type="text" name="nm_id" id="id_id" value="" placeholder="아이디 입력란"><br>
+                    비밀번호<br><input type="text" name="nm_pw" id="id_pw" value="" placeholder="비밀번호 입력란"><br>
+                    비밀번호 확인<div id="id_pwChkTxt" style="display: none; font-size: 0.5em; color: red;"></div><br>
+                    <input type="text" id="id_pwChk" value="" ><br>
+                    이름<br><input type="text" name="nm_name" id="id_name" value="" placeholder="성함 입력란"><br>
+                    <div class="cl_genDiv">성별<br>
+                        <label class="cl_labGen">남자<input type="radio" class="cl_gen" name="nm_gen" value="남자"></label>
+                        <label class="cl_labGen">여자<input type="radio" class="cl_gen" name="nm_gen" value="여자"></label>
+                    </div>
+                    <div class="cl_genDiv">생년월일<div id="id_birthChkTxt" style="display: inline-block; font-size: 0.5em;">(ex.19901115)</div><br>
+                        <input type="text" id="id_birth" name="nm_birth" style="height: 20px; width: 132px;" value="" placeholder="ex.19901115">
+                    </div><br>
+                    이메일<div id="id_emailChkTxt" style="display: none; font-size: 0.5em; color: red;"></div><br>
+                        <input type="text" name="nm_email" id="id_email" value="" placeholder="이메일 입력란"><br>
+                    <div class="cl_btns">
+                        <input type="submit" class="btn" value="가입" style="width: 60px;">
+                        <input type="button" class="btn" value="나가기" onclick="f_exit()" style="width: 60px;">        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        // ID 값 불러오기
+        var v_id = document.getElementById("id_id");
+        var v_pw = document.getElementById("id_pw");
+        var v_pwChk = document.getElementById("id_pwChk");
+        var v_pwChkTxt = document.getElementById("id_pwChkTxt");
+        var v_name = document.getElementById("id_name");
+        var v_gen = document.getElementsByName("nm_gen");
+        var v_birth = document.getElementById("id_birth");
+        var v_birthChk = document.getElementById("id_birthChkTxt");
+        var v_email = document.getElementById("id_email");
+        var v_emailChk = document.getElementById("id_emailChkTxt");        
+        // 확인용 변수
+        var v_orgPw = "";
+        var v_orgPwChk = "";
+        var v_pwChkToggle = false;
+        var v_birthChkToggle = false;
+        var v_emailChkToggle = false;
+        // 모달용 변수
+        var v_mo = document.getElementById("id_modal");
+        var v_moCh = document.getElementById("id_moChild");
+        var v_moChTxt = document.getElementById("id_moChTxt");
+        var v_moChThx = document.getElementById("id_moChThx")
+        // 비밀번호 가리기 함수
+        v_pw.addEventListener("change", function () {    
+            v_orgPw = v_pw.value;
+            v_pw.value = f_pwBlind(v_pw.value);
+        });
+        // 비밀번호 확인용 함수
+        v_pwChk.addEventListener("change", function () {              
+            if (v_orgPw == v_pwChk.value) {
+                v_pwChkTxt.style.display = "inline-block";
+                v_pwChkTxt.innerHTML = "비밀번호가 일치합니다."
+                v_pwChkTxt.style.color = "blue";            
+                v_pwChkToggle = true;    
+                v_orgPwChk = v_pwChk.value;
+            } else {
+                v_pwChkTxt.style.display = "inline-block";
+                v_pwChkTxt.innerHTML = "비밀번호가 일치하지않습니다.";
+                v_pwChkTxt.style.color = "red"; 
+                v_pw.value = "";
+                v_pwChk.value = "";
+                v_pwChkToggle = false;    
+            }
+            v_pwChk.value = f_pwBlind(v_pwChk.value);
+        });
+
+        v_birth.addEventListener("change", function () {
+            var v_birthRegExp = /(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+            if (v_birthRegExp.test(v_birth.value)) {
+                v_birthChkToggle = true;
+                v_birthChk.innerHTML = "양식과 같습니다.";
+                v_birthChk.style.color = "blue"; 
+            } else {
+                v_birthChkToggle = false;
+                v_birthChk.innerHTML = "양식과 다릅니다.";
+                v_birthChk.style.color = "red"; 
+            }            
+        });
+
+        v_email.addEventListener("change", function () {
+            var v_emailRegExp = /^.+@{1}.+\.{1}.+$/;
+            if (v_emailRegExp.test(v_email.value)) {
+                v_emailChkToggle = true;
+                v_emailChk.style.display = "inline-block";
+                v_emailChk.innerHTML = "이메일 양식과 일치합니다.";
+                v_emailChk.style.color = "blue"; 
+            } else {
+                v_emailChkToggle = false;
+                v_emailChk.style.display = "inline-block";
+                v_emailChk.innerHTML = "이메일 양식과 다릅니다.";
+                v_emailChk.style.color = "red"; 
+            }            
+        });
+
+        // 가입버튼 클릭시
+        function f_submit() {
+            if (!v_id.value || !v_pwChkToggle || !v_name.value || !v_birthChkToggle || !f_repeatChk(v_gen) || !v_emailChkToggle) {                              
+                v_mo.style.display = "block";
+                v_moCh.style.display = "block";
+                if (!v_id.value) v_moChTxt.innerHTML = "아이디를 입력해주세요!";       
+                if (!v_pwChkToggle) v_moChTxt.innerHTML = "비밀번호를 확인해주세요!";       
+                if (!v_name.value) v_moChTxt.innerHTML = "이름을 입력해주세요!";      
+                if (!v_birthChkToggle) v_moChTxt.innerHTML = "생년월일을 확인해주세요!";      
+                if (!f_repeatChk(v_gen)) v_moChTxt.innerHTML = "성별을 체크해주세요!!";     
+                if (!v_emailChkToggle) v_moChTxt.innerHTML = "이메일을 체크해주세요!";    
+                return false;
+            }
+            
+            // 중복 검사된 비밀번호를 파라미터값으로 넘기기위해 넣어준다.
+            v_pw.value = v_orgPwChk;
+            if(localStorage.getItem(v_id.value)){  // 이미 데이타가 존재한다면
+                v_mo.style.display = "block";
+                v_moCh.style.display = "block";
+                v_moChTxt.innerHTML = "이미 가입하셨네요!";        
+                return false;
+            } else {
+                var v_member = {};
+                v_member.id = v_id.value;
+                v_member.pw = v_pw.value;
+                v_member.name = v_name.value;
+                for (var i=0; i<v_gen.length; i++) {
+                    if (v_gen[i].checked) {
+                        v_member.gender = v_gen[i].value;                 
+                        break;    
+                    }                    
+                }
+                v_member.birth = v_birth.value;
+                v_member.email = v_email.value;
+
+                localStorage.setItem(v_id.value, JSON.stringify(v_member));
+                v_mo.style.display = "block";
+                v_moChThx.style.display = "block";
+
+                return false;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

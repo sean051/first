@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+    <title>홈페이지 제작 중입니다.</title>
+    <style>
+        #id_tb {
+            position: relative; 
+            margin: auto, 0; 
+            width: 500px; 
+            height: 300px; 
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="container">
+            <div class="header">
+                <div id="id_title">다 락 방</div>
+                <div id="id_menu">
+                    <div class="cl_menu" id="id_menu1">
+                        <a href="#" onclick="f_newSignUp()">회원가입</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu2">
+                        <a href="#" onclick="f_newLogin()">로그인</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu3">
+                        <a href="../index.html">홈</a>
+                    </div>
+                    <div class="cl_menu" id="id_menu4">
+                    </div>                 
+                </div>
+            </div>
+            <div class="nav">
+                <img src="../images/강지1.jpg" class="cl_navImg"><br><br><hr>
+                <div id="id_hiTxt">어서오세요. 환영합니다!</div><hr>
+                <ul id="menu">
+                    <li class="mainNav"><a href="#" style="color: black;" onclick="f_menu()">심리테스트</a><br>
+                        <ul id="id_ui">
+                            <a href="mind1.html" id="id_subMenu">그림기반 심리테스트</a><br>
+                            <a href="mind2.html" id="id_subMenu">그림기반 심리테스트2</a><br>
+                            <a href="#" id="id_subMenu">선택기반 심리테스트</a><br>
+                            <a href="mind4.html" id="id_subMenu">심심풀이 심리테스트</a><br>
+                        </ul>
+                    </li><br>
+                    <li class="mainNav"><a href="board.html" style="color: black;">자유게시판</a></li><br>
+                    <li class="mainNav"><a href="board.html" style="color: black;">유머게시판</a></li><br>
+                    <li class="mainNav"><a href="#" style="color: black;">나의 테스트 확인</a></li><br>
+                </ul>
+            </div>
+            <div class="content">
+                <table id="id_tb">
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+                    </tr>
+                    <tr>
+                        <td>165</td>
+                        <td>와웅</td>
+                        <td>윤현웅</td>
+                        <td>2016.12.01</td>
+                        <td>10</td>                        
+                    </tr>
+                    <tr>
+                        <td>165</td>
+                        <td>와웅</td>
+                        <td>윤현웅</td>
+                        <td>2016.12.01</td>
+                        <td>10</td>                        
+                    </tr>
+                    <tr>
+                        <td>165</td>
+                        <td>와웅</td>
+                        <td>윤현웅</td>
+                        <td>2016.12.01</td>
+                        <td>10</td>                        
+                    </tr>
+                </table>
+            </div>
+            <div class="footer">
+                <div id="id_footerTag">&copy; hungchipi corporation</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = f_statusChk();
+    </script>
+</body>
+</html>
